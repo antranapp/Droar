@@ -18,8 +18,7 @@ let package = Package(
     targets: [
         .target(
             name: "Droar",
-            dependencies: ["TweakPane"],
-            path: "Droar/Classes"
+            dependencies: ["TweakPane"]
         )
     ]
 )
