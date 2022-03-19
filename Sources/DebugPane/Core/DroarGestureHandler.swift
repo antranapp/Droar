@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-internal extension Droar {
+internal extension DebugPane {
     
     //State
     static var openRecognizer: UIGestureRecognizer!
@@ -19,7 +19,7 @@ internal extension Droar {
     private static let gestureDelegate = DroarGestureDelegate()
     
     //Setup
-    static func configureRecognizerForType(_ type: DroarGestureType, _ threshold: CGFloat) {
+    static func configureRecognizerForType(_ type: GestureType, _ threshold: CGFloat) {
         self.threshold = threshold
         
         //Setup show gesture
@@ -109,9 +109,9 @@ fileprivate class DroarGestureDelegate: NSObject, UIGestureRecognizerDelegate {
     }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if gestureRecognizer == Droar.openRecognizer {
+        if gestureRecognizer == DebugPane.openRecognizer {
             
-        } else if gestureRecognizer == Droar.dismissalRecognizer {
+        } else if gestureRecognizer == DebugPane.dismissalRecognizer {
             if touch.view is UISlider { return false } //Prevent pan from interfering with slider
         }
         

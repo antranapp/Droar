@@ -19,7 +19,7 @@ class DroarWindow: UIWindow {
     
 }
 
-internal extension Droar {
+internal extension DebugPane {
     
     static func initializeWindow() {
         

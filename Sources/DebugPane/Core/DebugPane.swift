@@ -9,12 +9,12 @@
 import UIKit
 import SwiftUI
 
-@objc public enum DroarGestureType: UInt {
-    case tripleTap, panFromRight
-}
+public class DebugPane: NSObject {
 
-@objc public class Droar: NSObject {
-    
+    public enum GestureType: UInt {
+        case tripleTap, panFromRight
+    }
+
     // Droar is a purely static class.
     private override init() { }
     
@@ -26,24 +26,24 @@ import SwiftUI
     private static let startOnce = DispatchOnce()
     public static private(set) var isStarted = false;
     
-    @objc public static func start() {
+    public static func start() {
         startOnce.perform {
             initializeWindow()
             setGestureType(.panFromRight)
-            Droar.isStarted = true
+            DebugPane.isStarted = true
         }
     }
     
-    @objc public static func setGestureType(_ type: DroarGestureType, _ threshold: CGFloat = 50.0) {
+    public static func setGestureType(_ type: GestureType, _ threshold: CGFloat = 50.0) {
         configureRecognizerForType(type, threshold)
     }
     
     //Navigation
-    @objc public static func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    public static func pushViewController(_ viewController: UIViewController, animated: Bool) {
         navController.pushViewController(viewController, animated: animated)
     }
     
-    @objc public static func present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+    public static func present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
         navController.present(viewController, animated: animated, completion: completion)
     }
     
@@ -65,12 +65,12 @@ import SwiftUI
 }
 
 //Visibility
-extension Droar {
+extension DebugPane {
     
     //Technically this could be wrong depending on the tx value, but it is close enough.
-    @objc public static var isVisible: Bool { return !(navController.view.transform == CGAffineTransform.identity) }
+    public static var isVisible: Bool { return !(navController.view.transform == CGAffineTransform.identity) }
     
-    @objc public static func openDroar(completion: (()->Void)? = nil) {
+    public static func openDroar(completion: (()->Void)? = nil) {
         window.isHidden = false
         
         UIView.animate(withDuration: 0.25, animations: {
@@ -85,7 +85,7 @@ extension Droar {
         }
     }
     
-    @objc public static func closeDroar(completion: (()->Void)? = nil) {
+    public static func closeDroar(completion: (()->Void)? = nil) {
         UIView.animate(withDuration: 0.25, animations: {
             navController.view.transform = CGAffineTransform.identity
             window.setActivationPercent(0)
@@ -100,7 +100,7 @@ extension Droar {
         }
     }
     
-    @objc static func toggleVisibility(completion: (()->Void)? = nil) {
+    static func toggleVisibility(completion: (()->Void)? = nil) {
         if isVisible {
             closeDroar(completion: completion)
         } else {
@@ -111,7 +111,7 @@ extension Droar {
 }
 
 //Backwards compatibility
-extension Droar {
+extension DebugPane {
     
     public static func dismissWindow() {
         closeDroar(completion: nil)
