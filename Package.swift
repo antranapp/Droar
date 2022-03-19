@@ -1,15 +1,15 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.5
 import PackageDescription
 
 let package = Package(
-    name: "Droar",
+    name: "DebugPane",
     platforms: [
         .iOS(.v14),
     ],
     products: [
         .library(
-            name: "Droar",
-            targets: ["Droar"]
+            name: "DebugPane",
+            targets: ["DebugPane"]
         ),
     ],
     dependencies: [
@@ -17,7 +17,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Droar",
+            name: "DebugPane",
             dependencies: ["TweakPane"]
         )
     ]

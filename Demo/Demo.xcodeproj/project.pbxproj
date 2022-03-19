@@ -12,7 +12,7 @@
 		7F1EDFB127E5636D005D7EFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F1EDFAF27E5636D005D7EFF /* Main.storyboard */; };
 		7F1EDFB327E5636E005D7EFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F1EDFB227E5636E005D7EFF /* Assets.xcassets */; };
 		7F1EDFB627E5636E005D7EFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F1EDFB427E5636E005D7EFF /* LaunchScreen.storyboard */; };
-		7FAB5E1D27E5D348006C00BC /* Droar in Frameworks */ = {isa = PBXBuildFile; productRef = 7FAB5E1C27E5D348006C00BC /* Droar */; };
+		7F8EC8A727E6999F00C13698 /* DebugPane in Frameworks */ = {isa = PBXBuildFile; productRef = 7F8EC8A627E6999F00C13698 /* DebugPane */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		7F1EDFB227E5636E005D7EFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F1EDFB527E5636E005D7EFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F1EDFB727E5636E005D7EFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7FAB5E1B27E5D337006C00BC /* Droar */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Droar; path = ..; sourceTree = "<group>"; };
+		7F8EC8A527E6997B00C13698 /* DebugPane */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DebugPane; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FAB5E1D27E5D348006C00BC /* Droar in Frameworks */,
+				7F8EC8A727E6999F00C13698 /* DebugPane in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,7 +41,7 @@
 		7F1EDF9D27E5636D005D7EFF = {
 			isa = PBXGroup;
 			children = (
-				7FAB5E1B27E5D337006C00BC /* Droar */,
+				7F8EC8A527E6997B00C13698 /* DebugPane */,
 				7F1EDFA827E5636D005D7EFF /* Demo */,
 				7F1EDFA727E5636D005D7EFF /* Products */,
 				7F1EDFBE27E565A9005D7EFF /* Frameworks */,
@@ -93,7 +93,7 @@
 			);
 			name = Demo;
 			packageProductDependencies = (
-				7FAB5E1C27E5D348006C00BC /* Droar */,
+				7F8EC8A627E6999F00C13698 /* DebugPane */,
 			);
 			productName = Demo;
 			productReference = 7F1EDFA627E5636D005D7EFF /* Demo.app */;
@@ -373,9 +373,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7FAB5E1C27E5D348006C00BC /* Droar */ = {
+		7F8EC8A627E6999F00C13698 /* DebugPane */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Droar;
+			productName = DebugPane;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

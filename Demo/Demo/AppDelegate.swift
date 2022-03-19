@@ -1,5 +1,5 @@
 import UIKit
-import Droar
+import DebugPane
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
