@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Droar",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v14),
     ],
     products: [
         .library(
@@ -13,15 +13,13 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/antranapp/TweakPane", .branch("master"))
     ],
     targets: [
         .target(
             name: "Droar",
-            dependencies: [],
-            path: "Droar/Classes",
-            resources: [
-                .process("Droar/Assets")
-            ]
+            dependencies: ["TweakPane"],
+            path: "Droar/Classes"
         )
     ]
 )
