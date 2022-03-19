@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc public protocol DroarCell where Self: UITableViewCell {
     @objc func stateDump() -> [String: String]?

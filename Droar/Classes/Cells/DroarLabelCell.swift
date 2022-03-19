@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class DroarLabelCell : UITableViewCell, DroarCell {
     @IBOutlet weak var titleLabel: UILabel!

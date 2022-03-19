@@ -7,7 +7,6 @@
 //
 
 #import "ObjcHelper.h"
-#import <Droar/Droar-Swift.h>
 
 @implementation ObjcHelper
     

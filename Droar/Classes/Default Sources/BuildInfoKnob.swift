@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 internal class BuildInfoKnob : DroarKnob {
     
@@ -57,10 +58,10 @@ internal class BuildInfoKnob : DroarKnob {
             cell.detailLabel.text = info?["CFBundleVersion"] as? String
         case .buildDate:
             cell.titleLabel.text = "Build Date"
-            cell.detailLabel.text = compileDate()
+//            cell.detailLabel.text = compileDate()
         case .buildTime:
             cell.titleLabel.text = "Build Time"
-            cell.detailLabel.text = compileTime()
+//            cell.detailLabel.text = compileTime()
         case .bundleId:
             cell.titleLabel.text = "Bundle ID"
             cell.detailLabel.text = info?["CFBundleIdentifier"] as? String

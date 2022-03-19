@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import SDVersion
+//import SDVersion
+import UIKit
 
 internal class DeviceInfoKnob : DroarKnob {
     private enum DeviceInfoRow: Int {
@@ -49,7 +50,7 @@ internal class DeviceInfoKnob : DroarKnob {
             cell.detailLabel.text = device.systemVersion
         case .model:
             cell.titleLabel.text = "Model"
-            cell.detailLabel.text = SDiOSVersion.deviceName(for: SDiOSVersion.deviceVersion())
+//            cell.detailLabel.text = SDiOSVersion.deviceName(for: SDiOSVersion.deviceVersion())
         case .resolution:
             cell.titleLabel.text = "Screen Resolution"
             cell.detailLabel.text = getScreenResolution()

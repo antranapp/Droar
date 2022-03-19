@@ -22,7 +22,7 @@ Droar is a useful tool for displaying runtime information and settings, useful f
   s.source           = { :git => 'https://github.com/myriadmobile/Droar.git', :branch => 'master', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
   s.swift_version = '4.2'
 
   s.source_files = 'Droar/Classes/**/*.{swift,h,m}'

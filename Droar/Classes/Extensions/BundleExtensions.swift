@@ -11,6 +11,7 @@ internal extension Bundle {
     
     static var podBundle: Bundle {
         return Bundle(for: Droar.self)
+        //return Bundle.module
     }
     
 }

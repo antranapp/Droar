@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "ObjcHelper.h"
 
 FOUNDATION_EXPORT double DroarVersionNumber;
 FOUNDATION_EXPORT const unsigned char DroarVersionString[];

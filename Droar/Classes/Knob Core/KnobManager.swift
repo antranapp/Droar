@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc public enum DefaultKnobType: Int {
     case buildInfo = 0
