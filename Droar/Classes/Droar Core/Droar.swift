@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 @objc public enum DroarGestureType: UInt {
     case tripleTap, panFromRight
@@ -20,7 +21,7 @@ import UIKit
     static var window: DroarWindow!
     
     internal static var navController: UINavigationController!
-    internal static var viewController: DroarViewController?
+    internal static var viewController: UIViewController!
     internal static let drawerWidth: CGFloat = 300
     private static let startOnce = DispatchOnce()
     public static private(set) var isStarted = false;
@@ -29,7 +30,6 @@ import UIKit
         startOnce.perform {
             initializeWindow()
             setGestureType(.panFromRight)
-            KnobManager.sharedInstance.prepareForStart()
             Droar.isStarted = true
         }
     }
@@ -60,30 +60,6 @@ import UIKit
     
     static func loadActiveResponder() -> UIViewController? {
         return loadKeyWindow()?.rootViewController
-    }
-    
-}
-
-//Knobs
-extension Droar {
-    
-    @objc public static func register(_ knob: DroarKnob) {
-        KnobManager.sharedInstance.registerStaticKnob(knob)
-        viewController?.tableView.reloadData()
-    }
-    
-    @objc(registerDefaultKnobs:)
-    public static func objc_registerDefaultKnobs(knobs: [Int]) {
-        registerDefaultKnobs(knobs.map({ DefaultKnobType(rawValue: $0)! }))
-    }
-    
-    public static func registerDefaultKnobs(_ knobs: [DefaultKnobType]) {
-        KnobManager.sharedInstance.registerDefaultKnobs(knobs)
-        viewController?.tableView.reloadData()
-    }
-    
-    public static func refreshKnobs() {
-        viewController?.tableView.reloadData()
     }
     
 }

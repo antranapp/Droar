@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class DroarWindow: UIWindow {
     
@@ -29,7 +30,8 @@ internal extension Droar {
         window.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         //VC - this is the main screen for Droar
-        viewController = DroarViewController(style: .grouped)
+//        viewController = DroarViewController(style: .grouped)
+        viewController = UIHostingController(rootView: ContentView())
         
         //Nav - this is the nav stack for Droar
         navController = UINavigationController(rootViewController: viewController!)
@@ -52,4 +54,10 @@ internal extension Droar {
         }
     }
     
+}
+
+struct ContentView: View {
+    var body: some View {
+        Text("Droar")
+    }
 }

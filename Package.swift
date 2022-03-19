@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Droar",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v13),
     ],
     products: [
         .library(
@@ -17,18 +17,11 @@ let package = Package(
     targets: [
         .target(
             name: "Droar",
-            dependencies: [
-                "ObjcHelper"
-            ],
+            dependencies: [],
             path: "Droar/Classes",
             resources: [
                 .process("Droar/Assets")
             ]
-        ),
-        .target(
-            name: "ObjcHelper",
-            dependencies: [],
-            path: "Droar/ObjcHelper"
-        ),
+        )
     ]
 )

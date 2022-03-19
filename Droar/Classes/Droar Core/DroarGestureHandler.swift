@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 internal extension Droar {
     
@@ -81,30 +82,7 @@ internal extension Droar {
         window.addSubview(navController.view)
         appWindow?.makeKeyAndVisible()
         
-        //Update for knob state
-        KnobManager.sharedInstance.registerDynamicKnobs(loadDynamicKnobs())
-        KnobManager.sharedInstance.prepareForDisplay(tableView: viewController?.tableView)
-        
         return true
-    }
-    
-    private static func loadDynamicKnobs() -> [DroarKnob] {
-        //Note: I think this dynamic knob feature could use some rethinking.
-        if let activeVC = loadActiveResponder() {
-            
-            let candidateVCs = activeVC.loadActiveViewControllers()
-            var knobs = [DroarKnob]()
-            
-            for candidate in candidateVCs {
-                if candidate is DroarKnob {
-                    knobs.append(candidate as! DroarKnob)
-                }
-            }
-            
-            return knobs
-        }
-        
-        return []
     }
     
     //Convenience

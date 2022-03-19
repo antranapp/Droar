@@ -35,7 +35,7 @@ internal extension UIFont {
         if let font = UIFont(name: named, size: size) { return font }
         
         //Attempt register if it does not
-        if let fontUrl = Bundle.podBundle.url(forResource: resource, withExtension: ".ttf") {
+        if let fontUrl = Bundle.module.url(forResource: resource, withExtension: ".ttf") {
             do {
                 try UIFont.register(url: fontUrl)
             } catch let error {
