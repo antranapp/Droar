@@ -9,28 +9,23 @@
 import UIKit
 import SwiftUI
 
-public class DebugPane: NSObject {
+public final class DebugPane {
 
     public enum GestureType: UInt {
         case tripleTap, panFromRight
     }
 
-    // Droar is a purely static class.
-    private override init() { }
-    
     static var window: DroarWindow!
     
-    internal static var navController: UINavigationController!
-    internal static var viewController: UIViewController!
-    internal static let drawerWidth: CGFloat = 300
+    static var navController: UINavigationController!
+    static var viewController: UIViewController!
+    static let drawerWidth: CGFloat = 300
     private static let startOnce = DispatchOnce()
-    public static private(set) var isStarted = false;
     
-    public static func start() {
+    public static func start(with gesture: GestureType = .panFromRight) {
         startOnce.perform {
             initializeWindow()
-            setGestureType(.panFromRight)
-            DebugPane.isStarted = true
+            setGestureType(gesture)
         }
     }
     

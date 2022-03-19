@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class DroarWindow: UIWindow {
+final class DroarWindow: UIWindow {
     
-    internal let defaultContainerAlpha: CGFloat = 0.5
+    let defaultContainerAlpha: CGFloat = 0.5
     
     func setActivationPercent(_ percent: CGFloat) {
         backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: defaultContainerAlpha * percent)
@@ -19,7 +19,7 @@ class DroarWindow: UIWindow {
     
 }
 
-internal extension DebugPane {
+extension DebugPane {
     
     static func initializeWindow() {
         
@@ -30,7 +30,6 @@ internal extension DebugPane {
         window.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         //VC - this is the main screen for Droar
-//        viewController = DroarViewController(style: .grouped)
         viewController = UIHostingController(rootView: ContentView())
         
         //Nav - this is the nav stack for Droar
