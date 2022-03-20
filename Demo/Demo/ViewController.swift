@@ -29,7 +29,7 @@ final class ViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
-        label.text = "\(appService.boolVar)"
+        label.text = "Dark Mode: \(appService.darkModeEnabled)"
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         
@@ -56,9 +56,14 @@ final class ViewController: UIViewController {
     }
     
     private func setupBindings() {
-        appService.$boolVar
+        appService.$darkModeEnabled
             .sink { [weak self] value in
-                self?.label.text = "\(value)"
+                self?.label.text = "Dark Mode: \(value)"
+                if value {
+                    self?.overrideUserInterfaceStyle = .dark
+                } else {
+                    self?.overrideUserInterfaceStyle = .light
+                }
             }
             .store(in: &bag)
     }

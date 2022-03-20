@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     
         DebugPane.start {
-            InputBlade(name: "Boolean Value", binding: InputBinding(self.$appService.boolVar))
+            InputBlade(name: "Dark Mode", binding: InputBinding(self.$appService.darkModeEnabled))
         }
         
         return true
@@ -27,5 +27,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 class AppService: ObservableObject {
-    @Published var boolVar: Bool = false
+    @Published var darkModeEnabled: Bool = true
 }
