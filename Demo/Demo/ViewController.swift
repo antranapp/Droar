@@ -29,20 +29,26 @@ final class ViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         label.text = "\(appService.boolVar)"
+        label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         
-        let stackView = UIStackView(arrangedSubviews: [label])
+        let instructionLabel = UILabel()
+        instructionLabel.text = "Swipe from the right edge to open the Debug Menu"
+        instructionLabel.textAlignment = .center
+        instructionLabel.numberOfLines = 0
+        instructionLabel.font = .systemFont(ofSize: 12)
+        
+        let stackView = UIStackView(arrangedSubviews: [label, instructionLabel])
         stackView.axis = .vertical
-        stackView.distribution = .equalCentering
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 20
         
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: label, attribute: .leading, relatedBy: .equal, toItem: stackView, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: label, attribute: .trailing, relatedBy: .equal, toItem: stackView, attribute: .trailing, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: stackView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: stackView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: stackView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: stackView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0),
         ])

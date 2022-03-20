@@ -38,8 +38,6 @@ extension DebugPane {
         navController = UINavigationController(rootViewController: viewController!)
         navController.view.frame = CGRect(x: window.frame.width, y: 0, width: drawerWidth, height: window.frame.height)
         navController.view.autoresizingMask = [.flexibleHeight, .flexibleLeftMargin]
-        navController.view.layer.borderWidth = 1
-        navController.view.layer.borderColor = UIColor.blue.cgColor
         
         //This observer watches for when new windows become available; we need to move gesture recognizer to the new window when this happens
         NotificationCenter.default.addObserver(self, selector: #selector(handleReceivedWindowDidBecomeKeyNotification), name: UIWindow.didBecomeKeyNotification, object: nil)
