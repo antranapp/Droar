@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+@_exported import TweakPane
 
 public final class DebugPane {
 
@@ -15,16 +16,19 @@ public final class DebugPane {
         case tripleTap, panFromRight
     }
 
-    static var window: DroarWindow!
+    static var window: DebugPaneWindow!
     
     static var navController: UINavigationController!
     static var viewController: UIViewController!
     static let drawerWidth: CGFloat = 300
     private static let startOnce = DispatchOnce()
     
-    public static func start(with gesture: GestureType = .panFromRight) {
+    public static func start(
+        with gesture: GestureType = .panFromRight,
+        @BladesBuilder _ content: @escaping () -> [Blade]
+    ) {
         startOnce.perform {
-            initializeWindow()
+            initializeWindow(content)
             setGestureType(gesture)
         }
     }

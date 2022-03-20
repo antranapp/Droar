@@ -16,7 +16,7 @@ internal extension DebugPane {
     static var dismissalRecognizer: UISwipeGestureRecognizer!
     
     static var threshold: CGFloat!
-    private static let gestureDelegate = DroarGestureDelegate()
+    private static let gestureDelegate = GestureDelegate()
     
     //Setup
     static func configureRecognizerForType(_ type: GestureType, _ threshold: CGFloat) {
@@ -102,7 +102,7 @@ internal extension DebugPane {
 }
 
 //Gesture Delegates
-fileprivate class DroarGestureDelegate: NSObject, UIGestureRecognizerDelegate {
+fileprivate class GestureDelegate: NSObject, UIGestureRecognizerDelegate {
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

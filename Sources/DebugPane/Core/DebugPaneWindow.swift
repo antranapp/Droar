@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 import SwiftUI
+import TweakPane
 
-final class DroarWindow: UIWindow {
+final class DebugPaneWindow: UIWindow {
     
     let defaultContainerAlpha: CGFloat = 0.5
     
@@ -21,16 +22,16 @@ final class DroarWindow: UIWindow {
 
 extension DebugPane {
     
-    static func initializeWindow() {
+    static func initializeWindow(@BladesBuilder _ content: @escaping () -> [Blade]) {
         
         //Window - we must add Droar to a high level window to keep it always on top
-        window = DroarWindow.init(frame: UIScreen.main.bounds)
+        window = DebugPaneWindow.init(frame: UIScreen.main.bounds)
         window.backgroundColor = .clear
         window.windowLevel = .init(.greatestFiniteMagnitude) //Topmost
         window.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         //VC - this is the main screen for Droar
-        viewController = UIHostingController(rootView: ContentView())
+        viewController = UIHostingController(rootView: ContentView(content))
         
         //Nav - this is the nav stack for Droar
         navController = UINavigationController(rootViewController: viewController!)
@@ -56,7 +57,16 @@ extension DebugPane {
 }
 
 struct ContentView: View {
+    @BladesBuilder private var content: () -> [Blade]
+    
+    init(@BladesBuilder _ content: @escaping () -> [Blade]) {
+        self.content = content
+    }
+    
     var body: some View {
-        Text("Droar")
+        ScrollView {
+            Pane(content)
+                .padding()
+        }
     }
 }
