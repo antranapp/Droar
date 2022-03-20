@@ -6,7 +6,7 @@ import SwiftUI
 @_exported import TweakPane
 import UIKit
 
-public enum DebugPane {
+public final class DebugPane: NSObject {
 
     public enum GestureType: UInt {
         case tripleTap, panFromRight
