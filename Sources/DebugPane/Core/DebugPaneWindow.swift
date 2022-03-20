@@ -32,12 +32,12 @@ extension DebugPane {
         
         //VC - this is the main screen for Droar
         viewController = UIHostingController(rootView: ContentView(content))
+        viewController.title = "Debug Pane"
         
         //Nav - this is the nav stack for Droar
         navController = UINavigationController(rootViewController: viewController!)
         navController.view.frame = CGRect(x: window.frame.width, y: 0, width: drawerWidth, height: window.frame.height)
         navController.view.autoresizingMask = [.flexibleHeight, .flexibleLeftMargin]
-        navController.navigationBar.isTranslucent = false
         navController.view.layer.borderWidth = 1
         navController.view.layer.borderColor = UIColor.blue.cgColor
         
