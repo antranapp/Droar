@@ -4,28 +4,41 @@
 
 import DebugPane
 import SwiftUI
+import Combine
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    
+    private var bag = Set<AnyCancellable>()
     
     @ObservedObject private var appService = AppService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = ViewController(appService: appService)
-        self.window?.makeKeyAndVisible()
+        window?.rootViewController = ViewController(appService: appService)
+        window?.makeKeyAndVisible()
     
         DebugPane.start {
             InputBlade(name: "Dark Mode", binding: InputBinding(self.$appService.darkModeEnabled))
         }
         
+        appService.$darkModeEnabled
+            .sink { [weak self] value in
+                if value {
+                    self?.window?.overrideUserInterfaceStyle = .dark
+                } else {
+                    self?.window?.overrideUserInterfaceStyle = .light
+                }
+            }
+            .store(in: &bag)
+        
         return true
     }
 }
 
-class AppService: ObservableObject {
+final class AppService: ObservableObject {
     @Published var darkModeEnabled: Bool = true
 }

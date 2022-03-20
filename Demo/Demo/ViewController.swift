@@ -59,11 +59,6 @@ final class ViewController: UIViewController {
         appService.$darkModeEnabled
             .sink { [weak self] value in
                 self?.label.text = "Dark Mode: \(value)"
-                if value {
-                    self?.overrideUserInterfaceStyle = .dark
-                } else {
-                    self?.overrideUserInterfaceStyle = .light
-                }
             }
             .store(in: &bag)
     }
