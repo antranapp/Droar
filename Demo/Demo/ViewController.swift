@@ -2,8 +2,8 @@
 // Copyright © 2022 An Tran. All rights reserved.
 //
 
-import UIKit
 import Combine
+import UIKit
 
 final class ViewController: UIViewController {
     
@@ -19,6 +19,7 @@ final class ViewController: UIViewController {
         setupBindings()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -62,4 +63,3 @@ final class ViewController: UIViewController {
             .store(in: &bag)
     }
 }
-

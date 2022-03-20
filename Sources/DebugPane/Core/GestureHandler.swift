@@ -1,28 +1,25 @@
 //
-//  DroarGestureHandler.swift
-//  Droar
-//
-//  Created by Nathan Jangula on 10/27/17.
+// Copyright © 2022 An Tran. All rights reserved.
 //
 
 import Foundation
-import UIKit
 import SwiftUI
+import UIKit
 
 internal extension DebugPane {
     
-    //State
+    // State
     static var openRecognizer: UIGestureRecognizer!
     static var dismissalRecognizer: UISwipeGestureRecognizer!
     
     static var threshold: CGFloat!
     private static let gestureDelegate = GestureDelegate()
     
-    //Setup
+    // Setup
     static func configureRecognizerForType(_ type: GestureType, _ threshold: CGFloat) {
         self.threshold = threshold
         
-        //Setup show gesture
+        // Setup show gesture
         switch type {
         case .tripleTap:
             let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTripleTap(sender:)))
@@ -35,14 +32,14 @@ internal extension DebugPane {
             replaceGestureRecognizer(with: recognizer)
         }
         
-        //Setup dismiss gesture
+        // Setup dismiss gesture
         if let old = dismissalRecognizer { old.view?.removeGestureRecognizer(old) }
         dismissalRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissalRecognizerEvent))
         dismissalRecognizer.direction = .right
         dismissalRecognizer.delegate = gestureDelegate
     }
     
-    //Handlers
+    // Handlers
     @objc private static func handleTripleTap(sender: UITapGestureRecognizer?) {
         guard let _ = sender else { print("Missing sender."); return }
         toggleVisibility()
@@ -65,7 +62,7 @@ internal extension DebugPane {
         default:
             sender.isEnabled = true
             
-            //Gesture finished; now we must determine what the final state is.
+            // Gesture finished; now we must determine what the final state is.
             if abs(navController.view.transform.tx) >= (navController.view.frame.size.width / 2) {
                 openDroar()
             } else {
@@ -74,9 +71,9 @@ internal extension DebugPane {
         }
     }
     
-    //Visibility Updates
+    // Visibility Updates
     private static func beginDroarVisibilityUpdate() -> Bool {
-        //Ensure the window is visible
+        // Ensure the window is visible
         let appWindow = loadKeyWindow()
         window.makeKeyAndVisible()
         window.addSubview(navController.view)
@@ -85,24 +82,24 @@ internal extension DebugPane {
         return true
     }
     
-    //Convenience
+    // Convenience
     static func replaceGestureRecognizer(with recognizer: UIGestureRecognizer) {
-        //Remove old (if applicable)
+        // Remove old (if applicable)
         if let gestureRecognizer = openRecognizer {
             gestureRecognizer.view?.removeGestureRecognizer(gestureRecognizer)
         }
         
-        //Add new
+        // Add new
         openRecognizer = recognizer
         loadKeyWindow()?.addGestureRecognizer(openRecognizer)
     }
     
-    @objc private static func dismissalRecognizerEvent() { closeDroar() } //We can't call closeDroar from the selector because of the optional completion block
+    @objc private static func dismissalRecognizerEvent() { closeDroar() } // We can't call closeDroar from the selector because of the optional completion block
     
 }
 
-//Gesture Delegates
-fileprivate class GestureDelegate: NSObject, UIGestureRecognizerDelegate {
+// Gesture Delegates
+private class GestureDelegate: NSObject, UIGestureRecognizerDelegate {
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -112,7 +109,7 @@ fileprivate class GestureDelegate: NSObject, UIGestureRecognizerDelegate {
         if gestureRecognizer == DebugPane.openRecognizer {
             
         } else if gestureRecognizer == DebugPane.dismissalRecognizer {
-            if touch.view is UISlider { return false } //Prevent pan from interfering with slider
+            if touch.view is UISlider { return false } // Prevent pan from interfering with slider
         }
         
         return true

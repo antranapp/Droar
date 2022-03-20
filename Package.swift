@@ -13,12 +13,12 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/antranapp/TweakPane", .branch("master"))
+        .package(url: "https://github.com/antranapp/TweakPane", .branch("master")),
     ],
     targets: [
         .target(
             name: "DebugPane",
             dependencies: ["TweakPane"]
-        )
+        ),
     ]
 )

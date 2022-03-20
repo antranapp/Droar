@@ -1,8 +1,5 @@
 //
-//  UIViewControllerExtensions.swift
-//  Droar
-//
-//  Created by Nathan Jangula on 10/16/17.
+// Copyright © 2022 An Tran. All rights reserved.
 //
 
 import Foundation

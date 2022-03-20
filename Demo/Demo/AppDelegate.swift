@@ -1,6 +1,10 @@
-import UIKit
+//
+// Copyright © 2022 An Tran. All rights reserved.
+//
+
 import DebugPane
 import SwiftUI
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

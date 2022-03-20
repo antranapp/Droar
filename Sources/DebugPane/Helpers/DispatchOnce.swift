@@ -1,13 +1,10 @@
 //
-//  DispatchOnce.swift
-//  Droar
-//
-//  Created by Nathan Jangula on 10/13/17.
+// Copyright © 2022 An Tran. All rights reserved.
 //
 
 import Foundation
 
-@objc public class DispatchOnce : NSObject {
+@objc public class DispatchOnce: NSObject {
     
     private var locked = false
         
